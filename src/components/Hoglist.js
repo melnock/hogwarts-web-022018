@@ -8,10 +8,12 @@ class Hoglist extends Component{
     const allPiggies = this.props.hogs.map((hog)=>{
       return <Hog hog={hog} img={this.props.formatHogNameToImage(hog.name)} key={hog.name}/>
     })
-    console.log(allPiggies)
     return(
-      <div className="ui grid container">
-        {allPiggies}
+      <div className="ui container">
+        <div className="ui fluid four wide column cards">
+
+          {allPiggies}
+        </div>
       </div>
     )
   }
