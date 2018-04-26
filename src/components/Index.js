@@ -17,14 +17,30 @@ class Index extends Component{
     })
   }
 
-  onFilter = (filter)=> {
+  onFilter = (filterChoice)=> {
+    const filteredHogs = filterChoice === 'all' ? hogs : hogs.filter(hog=>hog.greased == filterChoice)
     this.setState({
-      
+      hogs: filteredHogs
     })
   }
 
-  onSort = ()=>{
 
+  onSort = (pigPropToSortBy)=>{
+    this.setState({
+      sort: pigPropToSortBy
+    })
+  }
+
+  dynamicSort(property) {
+    var sortOrder = 1;
+    if(property[0] === "-") {
+        sortOrder = -1;
+        property = property.substr(1);
+    }
+    return function (a,b) {
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+        return result * sortOrder;
+    }
   }
 
   formatHogNameToImage = (hog)=>{
@@ -36,9 +52,9 @@ class Index extends Component{
     console.log(this.state.hogs)
     return(
       <div>
-        <Sort />
+        <Sort onSort={this.onSort}/>
         <Filter filter = {this.state.filter} onFilter={this.onFilter}/>
-        <Hoglist hogs = {this.state.hogs} formatHogNameToImage={this.formatHogNameToImage}/>
+        <Hoglist hogs = {this.state.hogs.sort(this.dynamicSort(this.state.sort))} formatHogNameToImage={this.formatHogNameToImage}/>
       </div>
     )
   }

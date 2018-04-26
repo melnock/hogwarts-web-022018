@@ -7,8 +7,11 @@ class Filter extends Component{
   }
 
   render(){
+    console.log("Hiiii")
     return(
+
       <div>
+        <p>Filter</p>
         <select onChange={this.handleChange}>
           <option value="all">All The Little Piggies</option>
           <option value="1">Greasy, Slippery Piggies</option>
