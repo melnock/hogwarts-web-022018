@@ -11,8 +11,8 @@ class Filter extends Component{
       <div>
         <select onChange={this.handleChange}>
           <option value="all">All The Little Piggies</option>
-          <option value="greased">Greasy, Slippery Piggies</option>
-          <option value="all">Easiest To Catch Piggies, Maybe</option>
+          <option value="1">Greasy, Slippery Piggies</option>
+          <option value="0">Easiest To Catch Piggies, Maybe</option>
         </select>
       </div>
     )
